@@ -4,8 +4,8 @@ import torch.nn.functional as F
 import torchvision.transforms as TF
 import torchvision.datasets as datasets
 import kornia
-import utils
 import os
+from src import utils
 
 
 places_dataloader = None

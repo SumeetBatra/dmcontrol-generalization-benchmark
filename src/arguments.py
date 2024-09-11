@@ -5,6 +5,10 @@ import numpy as np
 def parse_args():
 	parser = argparse.ArgumentParser()
 
+	# wandb
+	parser.add_argument('--wandb_group')
+	parser.add_argument('--wandb_name')
+
 	# environment
 	parser.add_argument('--domain_name', default='walker')
 	parser.add_argument('--task_name', default='walk')
@@ -62,8 +66,8 @@ def parse_args():
 	# eval
 	parser.add_argument('--save_freq', default='100k', type=str)
 	parser.add_argument('--eval_freq', default='10k', type=str)
-	parser.add_argument('--eval_episodes', default=30, type=int)
-	parser.add_argument('--distracting_cs_intensity', default=0., type=float)
+	parser.add_argument('--eval_episodes', default=10, type=int)
+	parser.add_argument('--distracting_cs_intensity', default=0.1, type=float)
 
 	# misc
 	parser.add_argument('--seed', default=None, type=int)

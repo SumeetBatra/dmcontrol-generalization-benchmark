@@ -3,10 +3,10 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from copy import deepcopy
-import utils
-import algorithms.modules as m
-from algorithms.sac import SAC
-import augmentations
+import src.utils as utils
+import src.algorithms.modules as m
+from src.algorithms.sac import SAC
+import src.augmentations as augmentations
 
 
 class SODA(SAC):
@@ -53,7 +53,7 @@ class SODA(SAC):
 		aug_x = x.clone()
 
 		x = augmentations.random_crop(x)
-		aug_x = augmentations.random_crop(aug_x)
+		aug_x = augmentations.random_conv(aug_x)
 		aug_x = augmentations.random_overlay(aug_x)
 
 		soda_loss = self.compute_soda_loss(aug_x, x)

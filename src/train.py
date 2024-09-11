@@ -2,16 +2,28 @@ import torch
 import os
 import numpy as np
 import gym
-import utils
 import time
-from arguments import parse_args
-from env.wrappers import make_env
-from algorithms.factory import make_agent
-from logger import Logger
-from video import VideoRecorder
+import wandb
+from src.arguments import parse_args
+from src.env.wrappers import make_env
+from src.algorithms.factory import make_agent
+from src.logger import Logger
+from src.video import VideoRecorder
+from src import utils
+from typing import Dict, Any
 
+use_wandb = True
 
-def evaluate(env, agent, video, num_episodes, L, step, test_env=False):
+def _setup_wandb(args) -> None:
+    """Sets up wandb experiment tracking if enabled"""
+    wandb.init(
+        project='ai_sim2real',
+        entity='qdrl',
+        group=args.wandb_group,
+        name=args.wandb_name,
+    )
+
+def evaluate(env, agent, video, num_episodes, L, step, suffix=''):
 	episode_rewards = []
 	for i in range(num_episodes):
 		obs = env.reset()
@@ -26,9 +38,13 @@ def evaluate(env, agent, video, num_episodes, L, step, test_env=False):
 			episode_reward += reward
 
 		if L is not None:
-			_test_env = '_test_env' if test_env else ''
-			video.save(f'{step}{_test_env}.mp4')
-			L.log(f'eval/episode_reward{_test_env}', episode_reward, step)
+			video.save(f'{step}{suffix}.mp4')
+			L.log(f'eval/episode_reward{suffix}', episode_reward, step)
+			if use_wandb:
+				wandb.log({
+					'env_step': step,
+					f'eval/episode_reward{suffix}': episode_reward
+				})
 		episode_rewards.append(episode_reward)
 	
 	return np.mean(episode_rewards)
@@ -46,19 +62,33 @@ def main(args):
 		seed=args.seed,
 		episode_length=args.episode_length,
 		action_repeat=args.action_repeat,
+		frame_stack=args.frame_stack,
 		image_size=args.image_size,
 		mode='train'
 	)
-	test_env = make_env(
+	color_env = make_env(
 		domain_name=args.domain_name,
 		task_name=args.task_name,
 		seed=args.seed+42,
 		episode_length=args.episode_length,
 		action_repeat=args.action_repeat,
+		frame_stack=args.frame_stack,
 		image_size=args.image_size,
-		mode=args.eval_mode,
+		mode='color_hard',
 		intensity=args.distracting_cs_intensity
-	) if args.eval_mode is not None else None
+	)
+
+	distracting_env = make_env(
+		domain_name=args.domain_name,
+		task_name=args.task_name,
+		seed=args.seed+42,
+		episode_length=args.episode_length,
+		action_repeat=args.action_repeat,
+		frame_stack=args.frame_stack,
+		image_size=args.image_size,
+		mode='distracting_cs',
+		intensity=args.distracting_cs_intensity
+	)
 
 	# Create working directory
 	work_dir = os.path.join(args.log_dir, args.domain_name+'_'+args.task_name, args.algorithm, str(args.seed))
@@ -102,8 +132,8 @@ def main(args):
 				print('Evaluating:', work_dir)
 				L.log('eval/episode', episode, step)
 				evaluate(env, agent, video, args.eval_episodes, L, step)
-				if test_env is not None:
-					evaluate(test_env, agent, video, args.eval_episodes, L, step, test_env=True)
+				evaluate(color_env, agent, video, args.eval_episodes, L, step, suffix='_color_hard')
+				evaluate(distracting_env, agent, video, args.eval_episodes, L, step, suffix='_distracting_cs')
 				L.dump(step)
 
 			# Save agent periodically
@@ -111,6 +141,11 @@ def main(args):
 				torch.save(agent, os.path.join(model_dir, f'{step}.pt'))
 
 			L.log('train/episode_reward', episode_reward, step)
+			if use_wandb:
+				wandb.log({
+					'env_step': step,
+					'train/episode_reward': episode_reward,
+				})
 
 			obs = env.reset()
 			done = False
@@ -147,4 +182,6 @@ def main(args):
 
 if __name__ == '__main__':
 	args = parse_args()
+	if use_wandb:
+		_setup_wandb(args)
 	main(args)

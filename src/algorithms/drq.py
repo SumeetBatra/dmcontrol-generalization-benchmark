@@ -3,9 +3,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from copy import deepcopy
-import utils
-import algorithms.modules as m
-from algorithms.sac import SAC
+import src.algorithms.modules as m
+from src.algorithms.sac import SAC
 
 
 class DrQ(SAC): # [K=1, M=1]

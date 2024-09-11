@@ -4,8 +4,8 @@ import os
 import glob
 import json
 import random
-import augmentations
 import subprocess
+from src import augmentations
 from datetime import datetime
 
 

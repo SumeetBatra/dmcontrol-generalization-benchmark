@@ -6,7 +6,7 @@ import torch
 import torch.nn.functional as F
 import torchvision.transforms.functional as TF
 import dmc2gym
-import utils
+from src import utils
 from collections import deque
 
 
@@ -28,7 +28,7 @@ def make_env(
 	paths = []
 	is_distracting_cs = mode == 'distracting_cs'
 	if is_distracting_cs:
-		import env.distracting_control.suite as dc_suite
+		import src.env.distracting_control.suite as dc_suite
 		loaded_paths = [os.path.join(dir_path, 'DAVIS/JPEGImages/480p') for dir_path in utils.load_config('datasets')]
 		for path in loaded_paths:
 			if os.path.exists(path):

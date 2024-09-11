@@ -3,9 +3,11 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from copy import deepcopy
-import utils
-import algorithms.modules as m
+import src.utils as utils
+import src.algorithms.modules as m
+import wandb
 
+use_wandb = True
 
 class SAC(object):
 	def __init__(self, obs_shape, action_shape, args):
@@ -95,6 +97,11 @@ class SAC(object):
 								 target_Q) + F.mse_loss(current_Q2, target_Q)
 		if L is not None:
 			L.log('train_critic/loss', critic_loss, step)
+			if use_wandb:
+				wandb.log({
+					'env_step': step,
+					'train/critic_loss': critic_loss,
+				})
 
 		self.critic_optimizer.zero_grad()
 		critic_loss.backward()
@@ -111,6 +118,11 @@ class SAC(object):
 			L.log('train_actor/loss', actor_loss, step)
 			entropy = 0.5 * log_std.shape[1] * (1.0 + np.log(2 * np.pi)
 												) + log_std.sum(dim=-1)
+			if use_wandb:
+				wandb.log({
+					'env_step': step,
+					'train/actor_loss': actor_loss
+				})
 
 		self.actor_optimizer.zero_grad()
 		actor_loss.backward()
@@ -123,6 +135,12 @@ class SAC(object):
 			if L is not None:
 				L.log('train_alpha/loss', alpha_loss, step)
 				L.log('train_alpha/value', self.alpha, step)
+				if use_wandb:
+					wandb.log({
+						'env_step': step,
+						'train/alpha_loss': alpha_loss,
+						'train/alpha_value': self.alpha,
+					})
 
 			alpha_loss.backward()
 			self.log_alpha_optimizer.step()

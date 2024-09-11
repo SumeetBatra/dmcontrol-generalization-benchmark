@@ -68,7 +68,7 @@ class DMCWrapper(core.Env):
 
         # create task
         if is_distracting_cs:
-            from env.distracting_control import suite as dc_suite
+            from src.env.distracting_control import suite as dc_suite
             self._env = dc_suite.load(
                 domain_name,
                 task_name,
@@ -87,7 +87,6 @@ class DMCWrapper(core.Env):
                 task_kwargs=task_kwargs,
                 visualize_reward=visualize_reward,
                 environment_kwargs=environment_kwargs,
-                setting_kwargs=setting_kwargs
             )
 
         # true and normalized action spaces

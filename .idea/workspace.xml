@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="34254fe2-71ca-4525-9cb5-b6a4bd2f2001" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/algorithms/modules.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/modules.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/sac.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/sac.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/soda.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/soda.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/svea.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/svea.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env/dm_control/dm_control/mujoco/wrapper/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/dm_control/dm_control/mujoco/wrapper/util.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env/dm_control/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/dm_control/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/env/dmc2gym/dmc2gym/wrappers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/env/dmc2gym/dmc2gym/wrappers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/train.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2j4Zd3YA8vxJFs6mNVCMVEqQfwL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.train.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/sumeet/dmcontrol_generalization_benchmark&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="train" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="dmcontrol-generalization-benchmark" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="dmcgb" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/train.py" />
+      <option name="PARAMETERS" value="--algorithm=soda --seed=0" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.train" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="34254fe2-71ca-4525-9cb5-b6a4bd2f2001" name="Changes" comment="" />
+      <created>1720648394023</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1720648394023</updated>
+      <workItem from="1720648395846" duration="111000" />
+      <workItem from="1724349520653" duration="362000" />
+      <workItem from="1725425665291" duration="128000" />
+      <workItem from="1725425797806" duration="58000" />
+      <workItem from="1725425866646" duration="33000" />
+      <workItem from="1725425913669" duration="133000" />
+      <workItem from="1725426068068" duration="107000" />
+      <workItem from="1725426181168" duration="95000" />
+      <workItem from="1725426280842" duration="152000" />
+      <workItem from="1725426433565" duration="44000" />
+      <workItem from="1725426480433" duration="400000" />
+      <workItem from="1725426885309" duration="71000" />
+      <workItem from="1725427116610" duration="50000" />
+      <workItem from="1725427172690" duration="21000" />
+      <workItem from="1725427198689" duration="44000" />
+      <workItem from="1725427247989" duration="26000" />
+      <workItem from="1725427279899" duration="139000" />
+      <workItem from="1725427424155" duration="142000" />
+      <workItem from="1725470773912" duration="12000" />
+      <workItem from="1725857250052" duration="115000" />
+      <workItem from="1725857401390" duration="57000" />
+      <workItem from="1725857464445" duration="229000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/dmcontrol_generalization_benchmark$train.coverage" NAME="train Coverage Results" MODIFIED="1725426317489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+  </component>
+</project>
