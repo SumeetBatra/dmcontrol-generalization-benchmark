@@ -53,7 +53,7 @@ class SODA(SAC):
 		aug_x = x.clone()
 
 		x = augmentations.random_crop(x)
-		aug_x = augmentations.random_conv(aug_x)
+		aug_x = augmentations.random_crop(aug_x)
 		aug_x = augmentations.random_overlay(aug_x)
 
 		soda_loss = self.compute_soda_loss(aug_x, x)

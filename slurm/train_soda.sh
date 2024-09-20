@@ -8,14 +8,17 @@
 
 export MUJOCO_GL=egl
 
-SEED=0
+set -- 0 1 2 3 4
 DOMAIN="cartpole"
 TASK="balance"
-RUN_NAME="soda_${DOMAIN}_${TASK}_seed_${SEED}"
-srun python -m src.train --algorithm=soda \
-                         --wandb_group=soda_${DOMAIN}_${TASK}_baseline \
-                         --wandb_name=$RUN_NAME \
-                         --domain_name=$DOMAIN \
-                         --task_name=$TASK \
-                         --train_steps=1000k \
-                         --seed=$SEED
+for seed in "$@";
+  do echo "Running seed $seed";
+  RUN_NAME="soda_${DOMAIN}_${TASK}_seed_"$seed
+  python -m src.train --algorithm=soda \
+                           --wandb_group=soda_${DOMAIN}_${TASK}_baseline \
+                           --wandb_name=$RUN_NAME \
+                           --domain_name=$DOMAIN \
+                           --task_name=$TASK \
+                           --train_steps=1000k \
+                           --seed="$seed"
+done

@@ -133,7 +133,7 @@ def main(args):
 				L.log('eval/episode', episode, step)
 				evaluate(env, agent, video, args.eval_episodes, L, step)
 				evaluate(color_env, agent, video, args.eval_episodes, L, step, suffix='_color_hard')
-				evaluate(distracting_env, agent, video, args.eval_episodes, L, step, suffix='_distracting_cs')
+				evaluate(distracting_env, agent, video, args.eval_episodes, L, step, suffix='_distracting')
 				L.dump(step)
 
 			# Save agent periodically
