@@ -14,7 +14,7 @@ TASK="balance"
 for seed in "$@";
   do echo "Running seed $seed";
   RUN_NAME="soda_${DOMAIN}_${TASK}_seed_"$seed
-  python -m src.train --algorithm=soda \
+  srun python -m src.train --algorithm=soda \
                            --wandb_group=soda_${DOMAIN}_${TASK}_baseline \
                            --wandb_name=$RUN_NAME \
                            --domain_name=$DOMAIN \
