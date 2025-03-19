@@ -26,7 +26,8 @@ class SVEA(SAC):
             target_Q = reward + (not_done * self.discount * target_V)
 
         if self.svea_alpha == self.svea_beta:
-            obs = utils.cat(obs, augmentations.random_overlay(obs.clone()))
+            # obs = utils.cat(obs, augmentations.random_overlay(obs.clone()))
+            obs = utils.cat(obs, obs.clone())
             action = utils.cat(action, action)
             target_Q = utils.cat(target_Q, target_Q)
 
@@ -38,7 +39,8 @@ class SVEA(SAC):
             critic_loss = self.svea_alpha * \
                           (F.mse_loss(current_Q1, target_Q) + F.mse_loss(current_Q2, target_Q))
 
-            obs_aug = augmentations.random_overlay(obs.clone())
+            # obs_aug = augmentations.random_overlay(obs.clone())
+            obs_aug = obs.clone()
             current_Q1_aug, current_Q2_aug = self.critic(obs_aug, action)
             critic_loss += self.svea_beta * \
                            (F.mse_loss(current_Q1_aug, target_Q) + F.mse_loss(current_Q2_aug, target_Q))
