@@ -74,7 +74,7 @@ def main(args):
 		action_repeat=args.action_repeat,
 		frame_stack=args.frame_stack,
 		image_size=args.image_size,
-		mode='color_hard',
+		mode='color_easy',
 		intensity=args.distracting_cs_intensity
 	)
 
@@ -132,7 +132,7 @@ def main(args):
 				print('Evaluating:', work_dir)
 				L.log('eval/episode', episode, step)
 				evaluate(env, agent, video, args.eval_episodes, L, step)
-				evaluate(color_env, agent, video, args.eval_episodes, L, step, suffix='_color_hard')
+				evaluate(color_env, agent, video, args.eval_episodes, L, step, suffix='_color_easy')
 				evaluate(distracting_env, agent, video, args.eval_episodes, L, step, suffix='_distracting')
 				L.dump(step)
 

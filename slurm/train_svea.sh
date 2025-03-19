@@ -8,13 +8,13 @@
 
 export MUJOCO_GL=egl
 
-set -- 0 1 2 3 4
-DOMAIN="cartpole"
-TASK="balance"
+set -- 0
+DOMAIN="walker"
+TASK="walk"
 for seed in "$@";
   do echo "Running seed $seed"
-  RUN_NAME="svea_${DOMAIN}_${TASK}_seed_${seed}"
-  srun python -m src.train --algorithm=svea \
+  RUN_NAME="svea_${DOMAIN}_${TASK}_seed_${seed}_coloreasy"
+  python -m src.train --algorithm=svea \
                            --wandb_group=svea_${DOMAIN}_${TASK}_baseline \
                            --wandb_name=$RUN_NAME \
                            --domain_name=$DOMAIN \
