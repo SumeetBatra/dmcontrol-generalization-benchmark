@@ -64,7 +64,7 @@ def main(args):
 		action_repeat=args.action_repeat,
 		frame_stack=args.frame_stack,
 		image_size=args.image_size,
-		mode='train'
+		mode='color_easy'
 	)
 	color_env = make_env(
 		domain_name=args.domain_name,
@@ -74,7 +74,7 @@ def main(args):
 		action_repeat=args.action_repeat,
 		frame_stack=args.frame_stack,
 		image_size=args.image_size,
-		mode='color_easy',
+		mode='color_hard',
 		intensity=args.distracting_cs_intensity
 	)
 
@@ -91,7 +91,7 @@ def main(args):
 	)
 
 	# Create working directory
-	work_dir = os.path.join(args.log_dir, args.domain_name+'_'+args.task_name, args.algorithm, str(args.seed))
+	work_dir = os.path.join(args.log_dir, args.domain_name+'_'+args.task_name+'_color_easy', args.algorithm, str(args.seed))
 	print('Working directory:', work_dir)
 	assert not os.path.exists(os.path.join(work_dir, 'train.log')), 'specified working directory already exists'
 	utils.make_dir(work_dir)
